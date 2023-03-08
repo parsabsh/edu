@@ -3,7 +3,7 @@
 ## Login Menu
 - exit
 - register \<role\> \<username\> \<password\>
-- login \<usenrame\> \<password\>
+- login \<username\> \<password\>
 
 ## Main Menu
 - teacher menu
