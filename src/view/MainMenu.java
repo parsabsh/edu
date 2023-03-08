@@ -15,13 +15,13 @@ public class MainMenu {
         while (true) {
             command = Menu.getScanner().nextLine();
             if (command.matches("^\\s*teacher\\s+menu\\s*$")) {
-                if (!controller.isLoggedInUserStudent())
-                    System.out.println("you don't have access to this menu");
+                if (controller.isLoggedInUserStudent())
+                    System.out.println("access denied!");
                 else
                     return "teacher menu";
             } else if (command.matches("^\\s*student\\s+menu\\s*$")) {
-                if (controller.isLoggedInUserStudent())
-                    System.out.println("you don't have access to this menu");
+                if (!controller.isLoggedInUserStudent())
+                    System.out.println("access denied!");
                 else
                     return "student menu";
             } else if (command.matches("^\\s*logout\\s*$")) {

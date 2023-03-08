@@ -8,15 +8,13 @@ import view.MainMenu;
 import view.StudentMenu;
 import view.TeacherMenu;
 
-import java.util.regex.Matcher;
-
 public class Controller {
     private Student loggedInStudent;
     private Teacher loggedInTeacher;
-    LoginMenu loginMenu;
-    MainMenu mainMenu;
-    TeacherMenu teacherMenu;
-    StudentMenu studentMenu;
+    private final LoginMenu loginMenu;
+    private final MainMenu mainMenu;
+    private final TeacherMenu teacherMenu;
+    private final StudentMenu studentMenu;
 
     public Controller() {
         loginMenu = new LoginMenu(this);
