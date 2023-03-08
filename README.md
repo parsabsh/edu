@@ -2,8 +2,8 @@
 
 ## Login Menu
 - exit
-- register <role> <username> <password>
-- login <usenrame> <password>
+- register \<role\> \<username\> \<password\>
+- login \<usenrame\> \<password\>
 
 ## Main Menu
 - teacher menu
@@ -12,11 +12,11 @@
 
 ## Teacher Menu
 - back
-- add course <name> <capacity>
+- add course \<name\> \<capacity\>
 - show all courses
 
 ## Student Menu
 - back
-- take course <name>
+- take course \<name\>
 - show my courses
 - show all courses
