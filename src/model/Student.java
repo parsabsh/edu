@@ -8,7 +8,7 @@ public class Student {
     private final String password;
     private final ArrayList<Course> courses;
 
-    public Student(String username, String password) {
+    private Student(String username, String password) {
         this.username = username;
         this.password = password;
         this.courses = new ArrayList<>();
@@ -35,11 +35,15 @@ public class Student {
         return username;
     }
 
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 
     public ArrayList<Course> getCourses() {
         return courses;
+    }
+
+    public boolean isPasswordCorrect(String password) {
+        return this.getPassword().equals(password);
     }
 }

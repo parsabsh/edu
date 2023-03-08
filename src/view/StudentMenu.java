@@ -21,7 +21,7 @@ public class StudentMenu {
                 return;
 
             if ((matcher = Menu.getMatcher(command, "^\\s*take\\s+course\\s+(?<name>\\S+)\\s*$")) != null)
-                System.out.println(controller.takeCourse(matcher));
+                System.out.println(controller.takeCourse(matcher.group("name")));
             else if (command.matches("^\\s*show\\s+my\\s+courses\\s*$"))
                 System.out.println(controller.showMyCourses());
             else if (command.matches("^\\s*show\\s+all\\s+courses\\s*$"))

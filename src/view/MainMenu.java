@@ -1,8 +1,6 @@
 package view;
 
 import controller.Controller;
-import model.Student;
-import model.Teacher;
 
 public class MainMenu {
     private Controller controller;
@@ -17,12 +15,12 @@ public class MainMenu {
         while (true) {
             command = Menu.getScanner().nextLine();
             if (command.matches("^\\s*teacher\\s+menu\\s*$")) {
-                if (!(controller.getLoggedInUser() instanceof Teacher))
+                if (!controller.isLoggedInUserStudent())
                     System.out.println("you don't have access to this menu");
                 else
                     return "teacher menu";
             } else if (command.matches("^\\s*student\\s+menu\\s*$")) {
-                if (!(controller.getLoggedInUser() instanceof Student))
+                if (controller.isLoggedInUserStudent())
                     System.out.println("you don't have access to this menu");
                 else
                     return "student menu";

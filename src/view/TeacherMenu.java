@@ -21,7 +21,7 @@ public class TeacherMenu {
                 return;
 
             if ((matcher = Menu.getMatcher(command, "^\\s*add\\s+course\\s+(?<name>\\S+)\\s+(?<capacity>\\d+)\\s*$")) != null)
-                System.out.println(controller.addCourse(matcher));
+                System.out.println(controller.addCourse(matcher.group("name"), Integer.parseInt(matcher.group("capacity"))));
             else if (command.matches("^\\s*show\\s+all\\s+courses\\s*$"))
                 System.out.println(controller.showAllCourses());
             else

@@ -25,8 +25,8 @@ public class Controller {
         studentMenu = new StudentMenu(this);
     }
 
-    public Object getLoggedInUser() {
-        return loggedInStudent == null ? loggedInTeacher : loggedInStudent;
+    public boolean isLoggedInUserStudent() {
+        return loggedInStudent != null;
     }
 
     public void run() {
@@ -46,11 +46,7 @@ public class Controller {
         }
     }
 
-    public String register(Matcher matcher) {
-        String username = matcher.group("username");
-        String password = matcher.group("password");
-        String role = matcher.group("role");
-
+    public String register(String username, String password, String role) {
         if (Teacher.getTeacherByUsername(username) != null || Student.getStudentByUsername(username) != null)
             return "register failed: username already exists";
 
@@ -66,16 +62,13 @@ public class Controller {
         return "register successful";
     }
 
-    public String login(Matcher matcher) {
-        String username = matcher.group("username");
-        String password = matcher.group("password");
-
+    public String login(String username, String password) {
         if ((loggedInTeacher = Teacher.getTeacherByUsername(username)) != null) {
-            if (!loggedInTeacher.getPassword().equals(password))
+            if (!loggedInTeacher.isPasswordCorrect(password))
                 return "login failed: incorrect password!";
             return "login successful";
         } else if ((loggedInStudent = Student.getStudentByUsername(username)) != null) {
-            if (!loggedInStudent.getPassword().equals(password))
+            if (!loggedInStudent.isPasswordCorrect(password))
                 return "login failed: incorrect password!";
             return "login successful";
         } else
@@ -88,10 +81,7 @@ public class Controller {
         return "logout successful";
     }
 
-    public String addCourse(Matcher matcher) {
-        String name = matcher.group("name");
-        int capacity = Integer.parseInt(matcher.group("capacity"));
-
+    public String addCourse(String name, int capacity) {
         loggedInTeacher.addCourse(name, capacity);
         return "course add successful";
     }
@@ -114,9 +104,7 @@ public class Controller {
         return res.toString();
     }
 
-    public String takeCourse(Matcher matcher) {
-        String name = matcher.group("name");
-
+    public String takeCourse(String name) {
         Course course = Course.getCourseByName(name);
         if (course == null)
             return "take course failed: course not found!";
