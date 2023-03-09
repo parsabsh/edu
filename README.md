@@ -1,4 +1,4 @@
-# edu
+# my-edu
 
 ## Login Menu
 - exit
